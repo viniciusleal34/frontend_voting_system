@@ -64,7 +64,7 @@ function ListagemUser() {
       style={{width:'90%'}}
         columns={columns}
         data={users}
-        title="Lista de candidatos"
+        title="Candidatos"
         onSelectionChange={(rows) => {
           if (rows.length > 3) {
             toast.error("Selecione apenas 3 candidatos");
