@@ -55,7 +55,6 @@ function SignIn() {
     <Container>
       <Body>
         <h1>ENTRAR</h1>
-        <span>O seu passaporte para o futuro.</span>
         <Forms ref={formRef} onSubmit={handleSubmit}>
           <span>Matricula</span>
           <Input name="matricula" placeholder="Digite sua matricula" />
