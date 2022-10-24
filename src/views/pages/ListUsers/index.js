@@ -44,6 +44,9 @@ function ListagemUser() {
       const resp = await api.post("/user/saveVote", {
         votos: bodyVote,
       });
+      if(resp.status == 200){
+        toast.success('Seu voto foi feito com sucesso!')
+      }
   
     }catch(err){
       console.error(err?.response?.data)

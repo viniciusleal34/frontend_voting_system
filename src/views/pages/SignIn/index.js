@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import getValidationErrors from "../../../utils/getValidationErrors";
 import { AuthContext } from "../../../contexts/UserContext";
 import { useHistory } from "react-router-dom";
-import { getToken } from "../../../services/auth";
+import { getToken, logout } from "../../../services/auth";
 import Background from "../../../assets/background.png";
 import { toast } from "react-toastify";
 
@@ -36,8 +36,10 @@ function SignIn() {
       const resp = await login(data);
       console.log(resp);
       console.log(resp.firstPassword);
-
-      if (resp.firstPassword == true) {
+      if(resp?.alreadyVote == true){
+        toast.success('Você já voto!')
+      }
+      else if (resp.firstPassword == true) {
         history.push("/new-password");
       } else if (resp) {
         toast.success(`Bem vindo, ${resp?.name}`)

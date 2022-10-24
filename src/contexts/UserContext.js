@@ -27,7 +27,9 @@ const AuthProvider = ({ children }) => {
     try {
       const response = await api.post("/auth/signin", credenciais);
       if (response.data?.jwt) {
-        login(response.data?.jwt, JSON.stringify(response.data));
+        if (!response.data.alreadyVote) {
+          login(response.data?.jwt, JSON.stringify(response.data));
+        }
         setUser(response.data);
         return response.data;
       } else {
