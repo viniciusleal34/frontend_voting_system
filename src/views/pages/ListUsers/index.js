@@ -58,9 +58,10 @@ function ListagemUser() {
   return (
     <Container>
       <MaterialTable
+      style={{width:'90%'}}
         columns={columns}
         data={users}
-        title="Material Table - Checkbox field  "
+        title="Lista de candidatos"
         onSelectionChange={(rows) => {
           if (rows.length > 3) {
             toast.error("Selecione apenas 3 candidatos");
@@ -68,19 +69,6 @@ function ListagemUser() {
           setCandidateVote(() => rows);
         }}
         options={{ search: true, actionsColumnIndex: -1, selection: true }}
-        editable={{
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataUpdate = [...users];
-                const index = oldData.tableData.id;
-                dataUpdate[index] = newData;
-                setUsers([...dataUpdate]);
-
-                resolve();
-              }, 1000);
-            }),
-        }}
       />
       <Button
         style={{ width: 100, alignSelf: "flex-start", marginLeft: "15%" }}
