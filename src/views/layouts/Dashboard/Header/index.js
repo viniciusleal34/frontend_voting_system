@@ -11,7 +11,7 @@ function Header({ name, nameUser }) {
     <Container>
       <Content>
       <h2>
-        Ola, {JSON.parse(getUser())?.name}
+        Olá, {JSON.parse(getUser())?.name}
         </h2>
         <button
           onClick={() => {
