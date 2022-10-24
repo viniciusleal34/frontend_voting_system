@@ -22,7 +22,7 @@ function Header({ name, nameUser }) {
             }, 200);
           }}
         >
-          Logout
+          Sair
         </button>
       </Content>
       <NamePage>
