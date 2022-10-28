@@ -37,7 +37,7 @@ function SignIn() {
       console.log(resp);
       console.log(resp.firstPassword);
       if(resp?.alreadyVote == true){
-        toast.success('Você já voto!')
+        toast.success('Você já votou !!')
       }
       else if (resp.firstPassword == true) {
         history.push("/new-password");

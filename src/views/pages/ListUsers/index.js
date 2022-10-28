@@ -60,7 +60,11 @@ function ListagemUser() {
         votos: bodyVote,
       });
       if (resp.status == 200) {
-        toast.success("Seu voto foi feito com sucesso!");
+        toast.success("Seu voto foi armazenado com sucesso!");
+        logout()
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       }
     } catch (err) {
       console.error(err?.response?.data);

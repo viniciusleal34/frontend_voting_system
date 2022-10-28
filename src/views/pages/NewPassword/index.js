@@ -49,13 +49,13 @@ function NewPassword() {
         <h1>Nova senha</h1>
         <span>Insira as informações da nova senha.</span>
         <Forms ref={formRef} onSubmit={handleSubmit}>
-          <span>Senha Atual</span>
+          <span>Nova Senha</span>
           <Input
             name="password"
             type="password"
             placeholder="Digite sua nova senha"
           />
-          <span>Nova Senha</span>
+          <span>Confirmar nova Senha</span>
           <Input
             name="passwordConfirmation"
             placeholder="Digite novamente a nova senha"
