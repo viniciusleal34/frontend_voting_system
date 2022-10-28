@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { toast } from "react-toastify";
 import Button from "../../../components/Button";
 import { AuthContext } from "../../../contexts/UserContext";
+import api from "../../../services/api";
 import { getUser, logout } from "../../../services/auth";
 
 import { Container } from "./styles";
