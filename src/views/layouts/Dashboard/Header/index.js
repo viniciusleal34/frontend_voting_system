@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { RiSearchLine } from "react-icons/ri";
+import React from "react";
 import { toast } from "react-toastify";
 import { getUser, logout } from "../../../../services/auth";
 
-import { Container, Content, NamePage, Buscar } from "./styles";
+import { Container, Content, NamePage } from "./styles";
 
 function Header({ name, nameUser }) {
 
@@ -26,7 +25,7 @@ function Header({ name, nameUser }) {
         </button>
       </Content>
       <NamePage>
-        <b>{name}</b>
+        <b>Caro Colaborador, chegou a hora de escolher os destaques do ano, Você pode votar três vezes! Boa Sorte</b>
       </NamePage>
     </Container>
   );

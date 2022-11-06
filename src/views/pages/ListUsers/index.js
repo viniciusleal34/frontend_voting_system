@@ -12,6 +12,7 @@ function ListagemUser() {
   const { getAllCandidateAsync } = useContext(AuthContext);
   const [candidateVote, setCandidateVote] = useState([]);
   const [candidateSelect, setCandidateSelect] = useState(false);
+  const [enableButton, setEnableButton] = useState(false);
   const [users, setUsers] = useState([]);
   const [columns, setColumns] = useState([
     { title: "Nome", field: "nome" },
@@ -21,7 +22,9 @@ function ListagemUser() {
   const getAllCandidate = async () => {
     try {
       const resp = await getAllCandidateAsync();
-      const candidatos = resp.filter(item => item.matricula != JSON.parse(getUser()).userName)
+      const candidatos = resp.filter(
+        (item) => item.matricula != JSON.parse(getUser()).userName
+      );
       if (candidatos) {
         setUsers(() => candidatos);
         return true;
@@ -55,13 +58,13 @@ function ListagemUser() {
       });
       if (candidateSelect != false) {
         bodyVote.push(candidateSelect);
-      } 
+      }
       const resp = await api.post("/user/saveVote", {
         votos: bodyVote,
       });
       if (resp.status == 200) {
         toast.success("Seu voto foi armazenado com sucesso!");
-        logout()
+        logout();
         setTimeout(() => {
           window.location.reload();
         }, 500);
@@ -75,6 +78,16 @@ function ListagemUser() {
   useEffect(() => {
     getAllCandidate();
   }, []);
+
+  useEffect(() => {
+    if (candidateSelect != false && candidateVote.length > 2) {
+      setEnableButton(false);
+    } else if (candidateVote.length > 3) {
+      setEnableButton(false);
+    } else if(candidateSelect === true || candidateVote.length > 0){
+      setEnableButton(true);
+    }
+  }, [candidateVote, candidateSelect]);
 
   return (
     <Container>
@@ -112,7 +125,13 @@ function ListagemUser() {
       />
       <Button
         style={{ width: 100, alignSelf: "flex-start", marginLeft: "15%" }}
-        onClick={sendVote}
+        onClick={
+          enableButton
+            ? () => sendVote()
+            : () => {
+                toast.error("Voce deve selecionar apenas 3 candidatos");
+              }
+        }
       >
         Votar
       </Button>
